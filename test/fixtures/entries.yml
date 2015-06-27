@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-06-19 17:21:12
+  turn: false
+  initial_value: 9.99
+  bill: 1
+  coins: 9.99
+  quantity: 1
+  posnet: 9.99
+  total_general: 9.99
+
+two:
+  date: 2015-06-19 17:21:12
+  turn: false
+  initial_value: 9.99
+  bill: 1
+  coins: 9.99
+  quantity: 1
+  posnet: 9.99
+  total_general: 9.99
