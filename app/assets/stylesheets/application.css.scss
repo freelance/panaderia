@@ -1,9 +1,8 @@
+/*
 *= require_self
-*= require twitter/bootstrap
 *= require_tree .
+*/
 
-$logo_green: #3b5263;
-
-@import 'bootstrap';
-body { padding-top: $navbarHeight + 10px; }
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
+$logo-green: #3b5263;
