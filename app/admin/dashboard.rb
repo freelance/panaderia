@@ -10,6 +10,8 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+
+                  
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
@@ -29,5 +31,61 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
+     columns do
+      column do
+        panel "Informacion General" do
+        table do
+            tr do
+              td "Cajas Locales Turno Mañana"
+              td "Cajas Locales Turno Tarde"
+            end
+            tr do
+              td Entry.sum(:total_general)
+              td Entry.sum(:total_general)
+              
+            end
+           end
+          end
+      end
+    #end
+
+	column do
+        panel "Locales" do
+            table do
+            tr do
+              td "Pago a Proveedores"
+              td "Cajas Locales Turno Tarde"
+            end
+            tr do
+              td Entry.sum(:total_general)
+              td Entry.sum(:total_general)
+              
+            end
+           end
+          
+        end
+      end
+      
+    
+      column do
+        panel "Info de Cajas" do
+        
+         # table_for Entries.joins(:store).order("stores.name, entries.name") do |t|
+        
+        
+          #table_for Table.joins(:school).order("schools.name, tables.name") do |t|
+           # t.column("Locales") { |row| row.store.name }
+           # t.column("Mesa") { |row| link_to(row.name, edit_admin_table_path(row.id)) }
+           # t.column("Votos Sí") { |row| row.votes_yes }
+           # t.column("Votos No") { |row| row.votes_no }
+           # t.column("Votos en Blanco") { |row| row.votes_blank }
+           # t.column("Votos Nulos") { |row| row.votes_nil }
+          end
+       
+      end
+      
+      
+    end
+    
   end # content
 end

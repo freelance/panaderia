@@ -5,6 +5,11 @@ ActiveAdmin.register Entry do
 #
 # permit_params :list, :of, :attributes, :on, :model
 #
+ permit_params :date, :turn, :initial_value, :bill, :coins, :quantity, :posnet, :total_general
+
+
+
+
 # or
 #
 # permit_params do
