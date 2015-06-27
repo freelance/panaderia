@@ -25,6 +25,11 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
