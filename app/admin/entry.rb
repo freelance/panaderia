@@ -1,6 +1,8 @@
 ActiveAdmin.register Entry do
 menu :priority => 3
+ filter :turn
 permit_params :bill, :store_id
+
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -26,10 +28,12 @@ index do
     column :quantity
     column :posnet
     column :date
+    column :total_general
     column :updated_at
-    #actions
+    actions
     
 end
+
 
  
 end

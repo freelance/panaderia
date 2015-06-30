@@ -36,19 +36,21 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Informacion General" do
         table do
             tr do
-              td "Cajas Locales Turno Mañana"
-              td "Cajas Locales Turno Tarde"
+              td "Cajas-Turno Mañana"
+              td "Cajas-Turno Tarde"
             end
             tr do
-              td Entry.sum(:total_general)
-              td Entry.sum(:total_general)
-              
-            end
+              td @ingresos_manana = Entry.where("turn = 'm'").sum(:total_general)
+              td @ingresos_tarde = Entry.where("turn = 't'").sum(:total_general)
+              #td Entry.sum(:quantity)
+             end
            end
           end
       end
+      
     #end
-
+    
+  
 	column do
         panel "Locales" do
             table do
@@ -70,6 +72,11 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Info de Cajas" do
         
+        div do
+          br
+          text_node %{<iframe src="https://rpm.newrelic.com/public/charts/6VooNO2hKWB" width="300" height="200" scrolling="no" frameborder="no"></iframe>}.html_safe
+        end
+        
          # table_for Entries.joins(:store).order("stores.name, entries.name") do |t|
         
         
@@ -86,6 +93,8 @@ ActiveAdmin.register_page "Dashboard" do
       
       
     end
+    
+    
     
   end # content
 end
