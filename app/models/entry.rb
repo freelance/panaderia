@@ -1,6 +1,4 @@
 class Entry < ActiveRecord::Base
-  belongs_to :store
+  belongs_to :store, :inverse_of => :entries
   
- scope :manana, ->{where("entries.date IS NULL")}
-
-end
+ end

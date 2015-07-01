@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bill: 1
+  quantity: 1
+  total: 9.99
+  entry_id: 
+
+two:
+  bill: 1
+  quantity: 1
+  total: 9.99
+  entry_id: 
