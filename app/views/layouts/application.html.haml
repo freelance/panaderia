@@ -9,16 +9,27 @@
   %body
   .navbar.navbar-fixed-top
   .navbar-inner
+    .container  
+    .row  
+    %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}  
+    .navbar.navbar-inverse.navbar-fixed-top  
+    .navbar-inner
     .container
-      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.brand{:href => root_url}
-        brand
-      .nav-collapse.collapse
-        %ul.nav.pull-right
-          %li
-            = link_to t('Contact'), "todo"
-
-    = yield
+      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"  
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+      a.brand href="#" Latest News
+      .nav-collapse.collapse ul.nav  
+      - @stores.each do |store|  
+      li  
+      a href="##{store.name}" style="color:#{category.color}"  
+      == category.name.capitalize  
+      %span.icon-bar  
+      %span.icon-bar  
+      %span.icon-bar  
+      %a.brand{:href => root_url}  
+      holanda  
+      .nav-collapse.collapse  
+      = yield  
+     
