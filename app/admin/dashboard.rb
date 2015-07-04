@@ -15,8 +15,8 @@ ActiveAdmin.register_page "Dashboard" do
               td "Cajas-Turno Tarde", :style => "text-align: centre;"
             end
             tr :class => "odd" do
-              td @ingresos_manana = Entry.where("turn = 'm'").sum(:total_general)
-              td @ingresos_tarde = Entry.where("turn = 't'").sum(:total_general)
+              td @ingresos_manana = Entry.where(turn: false).sum(:total_general)
+              td @ingresos_tarde = Entry.where(turn: true).sum(:total_general)
             end
            end
           end
