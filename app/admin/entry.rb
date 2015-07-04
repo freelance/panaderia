@@ -1,17 +1,18 @@
 ActiveAdmin.register Entry do
-menu :priority => 3
-filter :turn
-permit_params :bill, :store_id, :turn
+  
+  menu :priority => 3
+  
+  filter :turn
 
-scope :all, :default => true
+  scope :all, :default => true
+  
   scope :Mañana do |entries|
-    entries.where("turn ='m'")
+    entries.where(turn:false)
   end
   
- scope :Tarde do |entries|
-    entries.where("turn ='t'")
+  scope :Tarde do |entries|
+    entries.where(turn: true)
   end
-
 
   scope :Melipal do |entries|
     entries.where("store_id ='1'")
@@ -21,11 +22,11 @@ scope :all, :default => true
     entries.where("store_id ='2'")
   end
 
- scope :Km13 do |entries|
+  scope :Km13 do |entries|
     entries.where("store_id ='3'")
   end
     
- index do
+  index do
     selectable_column
     #column :id
     column :store_id
@@ -38,26 +39,25 @@ scope :all, :default => true
     column :total_general
     column :updated_at
     actions
-end
+  end
 
-form do |f|
-      f.inputs "Entry" do 
-        f.input :store_id
-        f.input :turn
-        f.input :initial_value
-        f.input :posnet
-        f.input :total_general
-        f.input :updated_at
-      end
+  form do |f|
+    f.inputs "Entry" do 
+      f.input :store_id
+      f.input :turn
+      f.input :initial_value
+      f.input :posnet
+      f.input :total_general
+      f.input :updated_at
+    end
 
-  f.has_many :bills do |bill|
-      
-        bill.input :quantity
-        bill.input :total	
-      end
+    f.has_many :bills do |bill|      
+      bill.input :quantity
+      bill.input :total	
+    end
 
-      f.actions
+    f.actions
+  end
 
-
-end
+  permit_params :bill, :store_id, :turn, :initial_value, :posnet, :total_general, :updated_at, bills_attributes: [:quantity, :total]
 end
