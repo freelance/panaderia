@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150630131335) do
 
   create_table "entries", force: :cascade do |t|
     t.datetime "date"
-    t.string   "turn"
+    t.boolean  "turn"
     t.decimal  "initial_value"
     t.integer  "bill"
     t.decimal  "coins"

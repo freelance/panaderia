@@ -7,29 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-  .navbar.navbar-fixed-top
-  .navbar-inner
-    .container  
-    .row  
-    %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}  
-    .navbar.navbar-inverse.navbar-fixed-top  
-    .navbar-inner
-    .container
-      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"  
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
-      a.brand href="#" Latest News
-      .nav-collapse.collapse ul.nav  
-      - @stores.each do |store|  
-      li  
-      a href="##{store.name}" style="color:#{category.color}"  
-      == category.name.capitalize  
-      %span.icon-bar  
-      %span.icon-bar  
-      %span.icon-bar  
-      %a.brand{:href => root_url}  
-      holanda  
-      .nav-collapse.collapse  
-      = yield  
+    - @stores.each do |store|
+      = link_to store.name, store
+    = yield
      

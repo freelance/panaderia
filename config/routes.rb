@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'home#index'
   resources :tareas
+  resources :store
    #root 'tareas#index'
 
  #resources "contacts", only: [:new, :create]
