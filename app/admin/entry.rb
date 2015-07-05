@@ -1,5 +1,6 @@
 ActiveAdmin.register Entry do
-  
+  permit_params :itemizable_type, :itemizable_id, itemizable_attributes: [:all]
+
   menu :priority => 3
   
   filter :turn
@@ -52,6 +53,7 @@ ActiveAdmin.register Entry do
     end
 
     f.has_many :bills do |bill|      
+      bill.input :bill
       bill.input :quantity
       bill.input :total	
     end
