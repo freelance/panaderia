@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
      
      columns do
       column do
-        panel "Recirentes Cajas" do
+        panel "Cajas" do
         
         table do
             tr do   
@@ -15,8 +15,8 @@ ActiveAdmin.register_page "Dashboard" do
               td "Cajas-Turno Tarde", :style => "text-align: centre;"
             end
             tr :class => "odd" do
-              td @ingresos_manana = Entry.where(turn: false).sum(:total_general)
-              td @ingresos_tarde = Entry.where(turn: true).sum(:total_general)
+              td @ingresos_manana = Entry.where(turn: 'm').sum(:total_general)
+              td @ingresos_tarde = Entry.where(turn: 't').sum(:total_general)
             end
            end
           end
@@ -26,11 +26,11 @@ ActiveAdmin.register_page "Dashboard" do
     
   
 	column do
-        panel "Locales" do
+        panel "Pagos" do
             table do
             tr do
               td "Pago a Proveedores"
-              td "Cajas Locales Turno Tarde"
+              td "locales"
             end
             tr do
               td Entry.sum(:total_general)

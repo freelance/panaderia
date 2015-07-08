@@ -3,9 +3,8 @@ ActiveAdmin.register Store do
   filter :name
   scope :all, :default => true
   belongs_to :entry, optional: true
+  permit_params :name,:id
 
-
- permit_params :name,:id
 
 index do
     selectable_column
@@ -16,12 +15,6 @@ index do
     
 end
 
-index do
-  selectable_column
-  column "Store" do |store|
-    link_to store.name, admin_store_path(store)
-  end
-end
     
 
  

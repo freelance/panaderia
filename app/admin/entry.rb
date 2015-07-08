@@ -36,7 +36,7 @@ ActiveAdmin.register Entry do
     #column :bill
     #column :quantity
     column :posnet
-    column :date
+    column :date    
     column :total_general
     column :updated_at
     actions
@@ -44,7 +44,8 @@ ActiveAdmin.register Entry do
 
   form do |f|
     f.inputs "Entry" do 
-      f.input :store_id
+      f.input :store_id, as: :select, collection:Store.pluck(:name,:id), label: "Local"
+      f.input :date, :as => :just_datetime_picker
       f.input :turn
       f.input :initial_value
       f.input :posnet
