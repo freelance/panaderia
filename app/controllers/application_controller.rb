@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :apply_data
 
    def apply_data
-    @stores = Store.order('created_at DESC')
-  end
+    @all_stores = Store.order('created_at DESC')
+   end
 end
