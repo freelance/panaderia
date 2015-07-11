@@ -5,7 +5,7 @@ class CreateStores < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    add_index :stores
+    
 
   end
 end
