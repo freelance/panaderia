@@ -46,7 +46,7 @@ ActiveAdmin.register Entry do
   form do |f|
     f.inputs "Entry" do 
       f.input :store_id, as: :select, collection:Store.pluck(:name,:id), label: "Local"
-      f.input :date,  :as => :just_datetime_picker
+      f.input :date, as: :datepicker, label: "Date"
       #as: :datepicker, datepicker_options: { min_date: "2013-10-8",max_date: "+3D" }
       f.input :turn
       f.input :initial_value
@@ -64,5 +64,5 @@ ActiveAdmin.register Entry do
     f.actions
   end
 
-  permit_params :bill, :store_id, :turn, :initial_value, :posnet, :total_general, :updated_at, bills_attributes: [:bill,:quantity, :total]
+  permit_params :bill, :store_id, :date, :turn, :initial_value, :posnet, :total_general, :updated_at, bills_attributes: [:bill,:quantity, :total]
 end
