@@ -19,8 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
-time:
- formats:
-   long: "%Y-%m-%d %H:%M:%S"
+es:
+  main_page:
+    hello: “Hola”
+    welcome: “Bienvenido a Mi Empresa”

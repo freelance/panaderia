@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :tareas
   resources :store
+  
+
+
    #root 'tareas#index'
 
  #resources "contacts", only: [:new, :create]
