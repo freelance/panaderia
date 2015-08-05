@@ -3,7 +3,7 @@ ActiveAdmin.register Entry do
    
 
   menu :priority => 3
-  
+
   filter :turn
 
   scope :all, :default => true
@@ -65,4 +65,6 @@ ActiveAdmin.register Entry do
   end
 
   permit_params :bill, :store_id, :date, :turn, :initial_value, :posnet, :total_general, :updated_at, bills_attributes: [:bill,:quantity, :total]
+  
+  
 end

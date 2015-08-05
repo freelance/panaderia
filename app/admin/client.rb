@@ -13,5 +13,6 @@ ActiveAdmin.register Client do
 #   permitted
 # end
 
+  permit_params  :name
 
 end
