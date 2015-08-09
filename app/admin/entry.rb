@@ -4,16 +4,17 @@ ActiveAdmin.register Entry do
 
   menu :priority => 3
 
-  filter :turn
+  filter :time_of_day, as: :select
+  filter :date
 
   scope :all, :default => true
   
   scope :Mañana do |entries|
-    entries.where(turn: "mañana")
+    entries.where(time_of_day: "mañana")
   end
   
   scope :Tarde do |entries|
-    entries.where(turn: "tarde")
+    entries.where(time_of_day: "tarde")
   end
 
   scope :Melipal do |entries|
@@ -40,6 +41,22 @@ ActiveAdmin.register Entry do
     column :date    
     column :total_general
     column :updated_at
+    column "horas de día", :time_of_day
+    if params['scope'] == 'manana'
+      column "tiempo total" do
+        "#{Entry.where(time_of_day: "mañana").search(date: params[:q]).result.sum(:total_general)}"
+      end
+    end
+
+    if params['scope'] == 'tarde' 
+      column "tiempo total" do
+        "#{Entry.where(time_of_day: "tarde").sum(:total_general)}"
+      end
+    end
+
+    column "total de día completo" do
+      "#{Entry.where(time_of_day: ["tarde", "mañana"]).search(date: params[:q]).result.sum(:total_general)}"
+    end
     actions
   end
 
@@ -52,6 +69,7 @@ ActiveAdmin.register Entry do
       f.input :initial_value
       f.input :posnet
       f.input :total_general
+      f.input :time_of_day, as: :select, collection: Entry::TIME_OF_DAY
       f.input :updated_at
     end
 
@@ -64,7 +82,7 @@ ActiveAdmin.register Entry do
     f.actions
   end
 
-  permit_params :bill, :store_id, :date, :turn, :initial_value, :posnet, :total_general, :updated_at, bills_attributes: [:bill,:quantity, :total]
+  permit_params :bill, :store_id, :date, :turn, :initial_value, :posnet, :total_general, :updated_at, :time_of_day, bills_attributes: [:bill,:quantity, :total]
   
   
 end
