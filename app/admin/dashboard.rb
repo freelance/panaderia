@@ -15,8 +15,8 @@ ActiveAdmin.register_page "Dashboard" do
               td "Pioneros TT", :style => "text-align: centre;"
             end
             tr :class => "odd" do
-              td @ingresos_manana = Entry.where(turn: 'm').sum(:total_general)
-              td @ingresos_tarde = Entry.where(turn: 't').sum(:total_general)
+              td @ingresos_manana = Entry.where(time_of_day: 'mañana').sum(:total_general)
+              td @ingresos_tarde = Entry.where(time_of_day: 'tarde').sum(:total_general)
             end
             
             #otro local
@@ -25,17 +25,22 @@ ActiveAdmin.register_page "Dashboard" do
               td "KM13 TT", :style => "text-align: centre;"
             end
             tr :class => "odd" do
-              td @ingresos_manana = Entry.where(turn: 'm').sum(:total_general)
-              td @ingresos_tarde = Entry.where(turn: 't').sum(:total_general)
+              td @ingresos_manana = Entry.where(time_of_day: 'mañana').sum(:total_general)
+              td @ingresos_tarde = Entry.where(time_of_day: 'tarde').sum(:total_general)
             end
             
             
            end
           end
       end
-      
-    #end
-    
+   
+   column do
+     panel "Recent Customers" do
+       table_for User.order('id desc').limit(10).each do |customer|
+         column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
+        end
+      end
+    end
   
 	column do
         panel "Pagos a proveedores" do
@@ -71,14 +76,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
       end
   end
-   column do
-       panel "Recent Customers" do
-         table_for User.order('id desc').limit(10).each do |customer|
-           column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
-       end
-         end
-       end
-     end
+     
 
 end
 
