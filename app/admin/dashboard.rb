@@ -68,35 +68,19 @@ ActiveAdmin.register_page "Dashboard" do
               td Entry.sum(:total_general)
             end
            end
-          
-        end
+          end
       end
-      
-    
-      
-    end
-
-columns do
-column do
-        panel "Pedidos Ordenes recientes a Clientes por Cobrar" do
-            table do
-            tr do
-              td "Estado"
-              td "Cliente"
-              td "Total"
-            end
-            tr do
-              td Entry.sum(:total_general) 
-              td Entry.sum(:total_general)
-              td Entry.sum(:total_general)
-            end
-           end
-          
-        end
-      end
+  end
+   column do
+       panel "Recent Customers" do
+         table_for User.order('id desc').limit(10).each do |customer|
+           column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
+       end
+         end
+       end
+     end
 
 end
-    
-  end # content
 
-end
+ 
+ end # content
