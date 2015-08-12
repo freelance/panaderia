@@ -37,7 +37,7 @@ ActiveAdmin.register_page "Dashboard" do
    column do
      panel "Recent Customers" do
        table_for Client.order('id desc').limit(10).each do |customer|
-         column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
+         column(:name)    {|customer| link_to(customer.name, admin_customer_path(customer)) }
         end
       end
     end
