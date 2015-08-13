@@ -35,13 +35,22 @@ ActiveAdmin.register_page "Dashboard" do
       end
    
    column do
-     panel "Recent Customers" do
+     panel "Clientes Recientes" do
        table_for Client.order('id desc').limit(10).each do |client|
          column(:name)    {|client| link_to(client.name, admin_client_path(client)) }
         end
       end
     end
   
+  column do
+panel "Ordenes/Pedidos Recientes" do
+table_for Order.complete.order('id desc').limit(10) do
+column("Estado") {|order| status_tag(order.state) }
+column("Cliente"){|order| link_to(order.client.email, admin_customer_path(order.client)) }
+column("Total") {|order| number_to_currency order.total_price }
+end
+end
+end
 	column do
         panel "Pagos a proveedores" do
             table do

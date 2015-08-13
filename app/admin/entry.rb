@@ -21,10 +21,6 @@ ActiveAdmin.register Entry do
     entries.where("store_id ='1'")
   end
   
-  scope :Centro do |entries|
-    entries.where("store_id ='2'")
-  end
-
   scope :Km13 do |entries|
     entries.where("store_id ='3'")
   end

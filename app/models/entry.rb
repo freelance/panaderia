@@ -9,4 +9,11 @@ class Entry < ActiveRecord::Base
   
   TIME_OF_DAY = %w(mañana tarde)
    
+   
+   def calculate_total_bill!
+	self.total = bills.bill * bills.quantity
+	save!
+end
+   
+  
  end
