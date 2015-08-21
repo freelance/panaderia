@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :client
   
   
   scope :in_progress, ->{where("orders.checked_out_at IS NULL")}
@@ -32,7 +32,7 @@ def state
 end
 
 def display_name
-	ActionController::Base.helpers.number_to_currency(total_price) +" - Order ##{id} (#{user.username})"
+	ActionController::Base.helpers.number_to_currency(total_price) +" - Order ##{id} (#{client.name})"
 end
   
   
