@@ -1,5 +1,5 @@
 ActiveAdmin.register Entry do
-  permit_params  :date, :itemizable_type, :itemizable_id, itemizable_attributes: [:all]
+  permit_params  :date, :turn, :initial_value, :itemizable_type, :itemizable_id, itemizable_attributes: [:all]
    
 
   menu :priority => 3
