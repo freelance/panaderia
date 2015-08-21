@@ -11,9 +11,9 @@ class Entry < ActiveRecord::Base
    
    
    def calculate_total_bill!
-	self.total = bills.bill * bills.quantity
-	save!
-end
+  	self.total = bills.bill * bills.quantity
+	  save!
+   end
    
   
  end
