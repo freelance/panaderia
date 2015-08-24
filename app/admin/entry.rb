@@ -61,7 +61,6 @@ ActiveAdmin.register Entry do
     f.inputs "Entry" do 
       f.input :store_id, as: :select, collection:Store.pluck(:name,:id), label: "Local"
       f.input :date, as: :datepicker, label: "Date"
-      #as: :datepicker, datepicker_options: { min_date: "2013-10-8",max_date: "+3D" }
       f.input :turn
       f.input :initial_value
       f.input :posnet

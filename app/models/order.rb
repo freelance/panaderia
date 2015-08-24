@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :client
   has_and_belongs_to_many :products, join_table: :orders_products
   has_many :line_items
+  accepts_nested_attributes_for :products
+
   
   scope :in_progress, ->{where("orders.checked_out_at IS NULL")}
   scope :complete, -> {where("orders.checked_out_at IS NOT NULL")}
@@ -33,7 +35,7 @@ def state
 end
 
 def display_name
-	ActionController::Base.helpers.number_to_currency(total_price) +" - Order ##{id} (#{client.name})"
+	ActionController::Base.helpers.number_to_currency(total_price) +" - Order ##{id}"
 end
   
   

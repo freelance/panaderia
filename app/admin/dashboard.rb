@@ -35,13 +35,13 @@ ActiveAdmin.register_page "Dashboard" do
           end
       end
    
-   column do
-     panel "Clientes Recientes" do
-       table_for Client.order('id desc').limit(10).each do |client|
-         column(:name)    {|client| link_to(client.name, admin_client_path(client)) }
-        end
-      end
-    end
+   #column do
+     #panel "Clientes Recientes" do
+       #table_for Client.order('id desc').limit(10).each do |client|
+         #column(:name)    {|client| link_to(client.name, admin_client_path(client)) }
+        #end
+      #end
+    #end
   
   column do
 panel "Ordenes/Pedidos Recientes" do
@@ -69,22 +69,22 @@ end
         end
       end
       
-      column do
-        panel "Ordenes recientes a Clientes por Cobrar" do
-            table do
-            tr do
-              td "Estado"
-              td "Cliente"
-              td "Total"
-            end
-            tr do
-              td Entry.sum(:total_general)
-              td Entry.sum(:total_general)
-              td Entry.sum(:total_general)
-            end
-           end
-          end
-      end
+      #column do
+        #panel "Ordenes recientes a Clientes por Cobrar" do
+            #table do
+            #tr do
+              #td "Estado"
+              #td "Cliente"
+              #td "Total"
+            #end
+            #tr do
+              #td Entry.sum(:total_general)
+              #td Entry.sum(:total_general)
+              #td Entry.sum(:total_general)
+            #end
+           #end
+          #end
+      #end
   end
      
 

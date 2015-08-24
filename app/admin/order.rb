@@ -1,7 +1,7 @@
 ActiveAdmin.register Order do
   menu parent: "Facturacion" 
 
-	permit_params  :client_id,:checked_out_at, :payment_status, :total_price, :store_id ,itemizable_attributes: [:all]
+	permit_params  :client_id,:checked_out_at, :payment_status, :total_price, :store_id ,itemizable_attributes: [:all],  products_attributes: [:name,:description, :price]
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -16,7 +16,9 @@ ActiveAdmin.register Order do
 #   permitted
 # end
 
-
+# form do |f|
+ #f.input :payment_status, as: :select, collection: Order.payment_statuses.keys, label: "Payment Status"
+#end
 
 
   filter :total_price
@@ -36,7 +38,7 @@ end
 		show do
 			panel "Invoice" do
 				table_for(order.line_items) do |t|
-					t.column("Producto") {|item| auto_link item.product }
+					t.column("Producto") {|item| auto_link item.product.name }
 					t.column("Precio") {|item| number_to_currency item.price }
 					tr :class => "odd" do
 					td "Total:", :style => "text-align: right;"
@@ -50,9 +52,30 @@ end
 	sidebar :client_information, :only => :show do
 		attributes_table_for order.client do
 			row("Cliente") { auto_link order.client }
-			row :email
+			
 		end
 	end
+	
+	
+	
+	#formularios
+	form do |f|
+    f.inputs "Order" do 
+      f.input :client_id, as: :select, collection:Client.pluck(:name,:id), label: "Cliente"
+      f.input :checked_out_at, as: :datepicker, label: "Date"
+      f.input :total_price
+      f.input :updated_at
+    end
+
+    f.has_many :products do |product|      
+      product.input :name
+      product.input :price
+     	
+    end
+
+    f.actions
+  end
+
 	
 	
 end
