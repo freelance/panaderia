@@ -1,5 +1,8 @@
 ActiveAdmin.register Store do
-  menu priority: 2
+    menu parent: "Store" 
+
+  
+  #menu priority: 2
   filter :name
   scope :all, :default => true
   belongs_to :entry, optional: true

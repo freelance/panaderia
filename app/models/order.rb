@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :client
   has_and_belongs_to_many :products, join_table: :orders_products
+  has_many :line_items
   
   scope :in_progress, ->{where("orders.checked_out_at IS NULL")}
   scope :complete, -> {where("orders.checked_out_at IS NOT NULL")}
@@ -8,7 +9,7 @@ class Order < ActiveRecord::Base
   COMPLETE = "complete"
   IN_PROGRESS = "in_progress"
   
-  
+  enum payment_status: [ :paid, :not_paid ]
   
   def self.find_with_product(product)
     return [] unless product

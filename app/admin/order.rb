@@ -1,6 +1,7 @@
 ActiveAdmin.register Order do
+  menu parent: "Facturacion" 
 
-	permit_params  :client_id,:checked_out_at, :total_price, :store_id ,itemizable_attributes: [:all]
+	permit_params  :client_id,:checked_out_at, :payment_status, :total_price, :store_id ,itemizable_attributes: [:all]
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

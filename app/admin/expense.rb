@@ -1,5 +1,7 @@
 ActiveAdmin.register Expense do
-menu :priority => 3
+#menu :priority => 3
+  menu parent: "Store" 
+
 permit_params :date, :turn, :store_id, :provider_id, :total_general, :description, :mount, :itemizable_type, :itemizable_id, itemizable_attributes: [:all]
 
 # See permitted parameters documentation:

@@ -1,8 +1,9 @@
 ActiveAdmin.register Entry do
   permit_params  :date, :turn, :initial_value, :itemizable_type, :itemizable_id, itemizable_attributes: [:all]
-   
+  menu parent: "Store" 
+   # menu false
 
-  menu :priority => 3
+  #menu :priority => 3
 
   filter :time_of_day, as: :select
   filter :date
