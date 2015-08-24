@@ -17,14 +17,14 @@ ActiveAdmin.register Client do
   permit_params  :name
   config.batch_actions = true
   filter :name
-  filter :email
+  #filter :email
   filter :created_at
   
   index do
 	selectable_column
 	id_column
 	column :name
-	column :email
+	#column :email
 	column :created_at
 	actions
 end
@@ -43,7 +43,7 @@ end
 
 
 	sidebar "Client Details", :only => :show do
-		attributes_table_for client, :name, :email, :created_at
+		attributes_table_for client, :name, :created_at
 	end
 	
 	
