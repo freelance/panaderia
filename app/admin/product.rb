@@ -17,7 +17,7 @@ ActiveAdmin.register Product do
 
 scope :all, :default => true
 
-show :title => :title
+show :name => :name
 	sidebar :product_stats, :only => :show do
 	attributes_table_for resource do
 	row("Venta Total") { Order.find_with_product(resource).count }
