@@ -32,14 +32,15 @@ index do
 	column("State") {|order| status_tag(order.state) }
 	column("Date", :checked_out_at)
 	column("Client", :client, :sortable => :client_id)
+  column("Product")
 	column("Total") {|order| number_to_currency order.total_price }
 end
 
 		show do
 			panel "Invoice" do
-				table_for(order.line_items) do |t|
-					t.column("Producto") {|item| auto_link item.product.name }
-					t.column("Precio") {|item| number_to_currency item.price }
+				table_for(order) do |t|
+					t.column("Producto") {|item| auto_link item.products.map(&:name) }
+					t.column("Precio") {|item| number_to_currency item.products.map(&:price) }
 					tr :class => "odd" do
 					td "Total:", :style => "text-align: right;"
 					td number_to_currency(order.total_price)
@@ -63,6 +64,7 @@ end
     f.inputs "Order" do 
       f.input :client_id, as: :select, collection:Client.pluck(:name,:id), label: "Cliente"
       f.input :checked_out_at, as: :datepicker, label: "Date"
+      f.input :products, as: :check_boxes, collection: Product.all, label: "Producto"
       f.input :total_price
       f.input :updated_at
     end
