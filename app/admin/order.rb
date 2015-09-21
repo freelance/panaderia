@@ -39,8 +39,8 @@ end
 		show do
 			panel "Invoice" do
 				table_for(order) do |t|
-					t.column("Producto") {|item| auto_link item.products.map(&:name) }
-					t.column("Precio") {|item| number_to_currency item.products.map(&:price) }
+					t.column("Producto") {|item| auto_link item.products.map(&:name).join(',') }
+					t.column("Precio") {|item| number_to_currency item.products.map{ |i| i.price.to_f }.join(',') }
 					tr :class => "odd" do
 					td "Total:", :style => "text-align: right;"
 					td number_to_currency(order.total_price)
