@@ -17,11 +17,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  password: p4r4b0l4
+  password: backerei
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-
+  host: localhost
+  username: postgres
+  password: backerei
 development:
   <<: *default
   database: panaderia_development

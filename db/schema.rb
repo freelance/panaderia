@@ -129,6 +129,9 @@ ActiveRecord::Schema.define(version: 20150823044910) do
     t.integer  "payment_status"
   end
 
+  add_index "orders", ["checked_out_at"], name: "index_orders_on_checked_out_at", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
   create_table "orders_products", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
